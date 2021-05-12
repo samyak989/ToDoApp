@@ -19,7 +19,8 @@ def hello_world():
     todo = Todo(title = "First Todo", desc = "My first task")
     db.session.add(todo)
     db.session.commit()
-    return render_template("index.html")
+    allTodo = Todo.query.all()
+    return render_template("index.html", allTodo = allTodo)
 
 @app.route('/show')
 def products():
@@ -28,4 +29,4 @@ def products():
     return 'Here are some products'
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True) 
